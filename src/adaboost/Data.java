@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -15,49 +16,8 @@ import com.google.common.collect.Lists;
 import org.apache.commons.csv.*;
 //import java.nio.charset.StandardCharsets;
 
-class DataPoint
-{
-	double x[];
-	String label;
-	int y;
-	
-	public DataPoint(CSVRecord csvRecord,Dataset dataset)
-	{	
-		String label=csvRecord.get(csvRecord.size()-1);
-		Integer y=dataset.Labels.get(label);
-		if(y==null)
-		{
-			this.y=dataset.Labels.size();
-			dataset.Labels.put(label, new Integer(this.y));
-		}
-		else
-		{
-			this.y=y.intValue();
-		}
-		int ctr=0;
-		this.x=new double[csvRecord.size()-1];
-        for(String value : csvRecord)
-        {
-        	if(ctr<this.x.length)
-        	{
-        		this.x[ctr++]=Double.parseDouble(value);
-        	} 	
-        }
-	}
-	
-	public String toString()
-	{
-		return "Label"+y;
-	}
-}
-class Dataset
-{
-	HashMap<String, Integer> Labels;// = new HashMap<String, Integer>();
-	public Dataset()
-	{
-		this.Labels = new HashMap<String, Integer>();
-	}
-}
+
+
 public class Data
 {
 	ArrayList<DataPoint> datapoints;
