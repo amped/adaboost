@@ -22,6 +22,11 @@ public class Data
 {
 	ArrayList<DataPoint> datapoints;
 	Dataset dataset;
+	public Data(ArrayList<DataPoint> datapoints, Dataset dataset)
+	{
+		this.datapoints=datapoints;
+		this.dataset=dataset;
+	}
 	
 	public Data(String fpath)
 	{
